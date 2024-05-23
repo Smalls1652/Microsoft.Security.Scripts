@@ -130,5 +130,5 @@ foreach ($scriptFileItem in $scriptFiles) {
         }
     }
 
-    $docStringBuilder.ToString() | Out-File -FilePath $scriptDocsFilePath -Force
+    $docStringBuilder.ToString() | Out-File -FilePath $scriptDocsFilePath -Force -NoNewline
 }
