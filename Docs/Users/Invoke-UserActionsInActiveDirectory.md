@@ -66,4 +66,3 @@ PS > Invoke-UserActionsInActiveDirectory.ps1 -UserName "jwinger" -ForcePasswordR
 | --- | --- |
 | `ActiveDirectory` | `1.0.1 <=` |
 
-
