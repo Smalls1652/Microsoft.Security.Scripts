@@ -78,14 +78,17 @@ param(
     [pscredential]$Credential
 )
 
+# Create a splat to pass to the AD cmdlets.
 $adCmdletSplat = @{
     "ErrorAction" = "Stop";
 }
 
+# Add the server to the splat if it was provided.
 if ($null -ne $Server) {
     $adCmdletSplat.Add("Server", $Server)
 }
 
+# Add the credential to the splat if it was provided.
 if ($null -ne $Credential) {
     $adCmdletSplat.Add("Credential", $Credential)
 }
@@ -93,13 +96,17 @@ if ($null -ne $Credential) {
 foreach ($userItem in $UserName) {
     $adUserObj = $null
     try {
+        Write-Verbose "Getting '$($userItem)'."
         $adUserObj = Get-ADUser -Identity $userItem @adCmdletSplat
     }
     catch {
+        # If an error occured getting the user,
+        # continue to the next user.
         $PSCmdlet.WriteError($PSItem)
         continue
     }
 
+    # Disable the user if the switch was provided.
     $userDisabled = $false
     if ($Disable) {
         if ($PSCmdlet.ShouldProcess($adUserObj.DistinguishedName, "Disable user")) {
@@ -108,6 +115,7 @@ foreach ($userItem in $UserName) {
         }
     }
 
+    # Force a password reset if the switch was provided.
     $forcedPasswordReset = $false
     if ($ForcePasswordReset) {
         if ($PSCmdlet.ShouldProcess($adUserObj.DistinguishedName, "Force password reset")) {
@@ -116,6 +124,7 @@ foreach ($userItem in $UserName) {
         }
     }
 
+    # Output the results.
     [pscustomobject]@{
         "UserName" = $adUserObj.Name;
         "UserDisabled" = $userDisabled;

@@ -60,12 +60,16 @@ foreach ($userItem in $UserPrincipalName) {
         $userObj = Get-MgUser -UserId $userItem -ErrorAction "Stop"
     }
     catch {
+        # If an error occurred getting the user,
+        # continue to the next user.
         $PSCmdlet.WriteError($PSItem)
         continue
     }
 
+    # Confirm the user is compromised.
     $confirmedCompromisedStatus = $false
     if ($PSCmdlet.ShouldProcess($userObj.UserPrincipalName, "Confirm compromised")) {
+        # Note: There isn't a cmdlet for this, so we have to use the Graph API directly.
         $confirmCompromisedPostBody = [pscustomobject]@{
             "userIds" = @(
                 $userObj.Id
@@ -81,6 +85,7 @@ foreach ($userItem in $UserPrincipalName) {
         }
     }
 
+    # Revoke all sessions for the user.
     $revokedSessionsStatus = $false
     if ($PSCmdlet.ShouldProcess($userObj.UserPrincipalName, "Revoke sessions")) {
         try {
@@ -91,6 +96,7 @@ foreach ($userItem in $UserPrincipalName) {
         }
     }
 
+    # Output the results.
     [pscustomobject]@{
         "UserId"               = $userObj.Id;
         "UserPrincipalName"    = $userObj.UserPrincipalName;
