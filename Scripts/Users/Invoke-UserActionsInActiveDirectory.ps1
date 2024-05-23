@@ -1,4 +1,69 @@
+<#PSScriptInfo
+
+.VERSION 1.0.0
+
+.GUID bd35d973-606d-4c33-b02b-3cd3d20a1f22
+
+.AUTHOR Tim Small
+
+.COMPANYNAME Smalls.Online
+
+.COPYRIGHT 2024
+
+.TAGS activedirectory security users
+
+.LICENSEURI https://raw.githubusercontent.com/Smalls1652/Microsoft.Security.Scripts/main/LICENSE
+
+.PROJECTURI https://github.com/Smalls1652/Microsoft.Security.Scripts
+
+.ICONURI 
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS 
+
+.EXTERNALSCRIPTDEPENDENCIES 
+
+.RELEASENOTES
+
+#>
+
 #Requires -Module @{ ModuleName = "ActiveDirectory"; ModuleVersion = "1.0.1" }
+
+<#
+.SYNOPSIS
+    Disable and/or force password reset for user(s) in Active Directory.
+.DESCRIPTION
+    Disable and/or force password reset for user(s) in Active Directory.
+.NOTES
+    This script can only be run on a Windows machine with the 'ActiveDirectory' module installed.
+.PARAMETER UserName
+    The username(s) to run the action against.
+.PARAMETER Disable
+    Disable the user account(s).
+.PARAMETER ForcePasswordReset
+    Force a password reset for the user account(s).
+.PARAMETER Server
+    The Active Directory server to run the action against.
+.PARAMETER Credential
+    The credential to use for running the action.
+.EXAMPLE
+    Invoke-UserActionsInActiveDirectory.ps1 -UserName "jwinger" -Disable -ForcePasswordReset
+
+    Disable and force a password reset for a user.
+.EXAMPLE
+    Invoke-UserActionsInActiveDirectory.ps1 -UserName @("jwinger", "tbarnes") -Disable -ForcePasswordReset
+
+    Disable and force a password reset for multiple users.
+.EXAMPLE
+    Invoke-UserActionsInActiveDirectory.ps1 -UserName "jwinger" -Disable
+
+    Disable a user.
+.EXAMPLE
+    Invoke-UserActionsInActiveDirectory.ps1 -UserName "jwinger" -ForcePasswordReset
+
+    Force a password reset for a user.
+#>
 [CmdletBinding(SupportsShouldProcess)]
 param(
     [Parameter(Position = 0, Mandatory)]
