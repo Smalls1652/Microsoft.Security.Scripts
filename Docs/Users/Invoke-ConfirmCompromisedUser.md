@@ -35,4 +35,3 @@ PS > Invoke-ConfirmCompromisedUser.ps1 -UserPrincipalName @("jwinger@greendalecc
 | [`Microsoft.Graph.Authentication`](https://www.powershellgallery.com/packages/Microsoft.Graph.Authentication) | `2.17.0 <=` |
 | [`Microsoft.Graph.Beta.Users.Actions`](https://www.powershellgallery.com/packages/Microsoft.Graph.Beta.Users.Actions) | `2.17.0 <=` |
 | [`Microsoft.Graph.Users`](https://www.powershellgallery.com/packages/Microsoft.Graph.Users) | `2.17.0 <=` |
-
