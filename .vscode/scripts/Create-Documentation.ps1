@@ -128,8 +128,6 @@ foreach ($scriptFileItem in $scriptFiles) {
 
             $null = $docStringBuilder.AppendLine("| $($moduleNameText) | ``$($moduleVersionText)`` |")
         }
-
-        $null = $docStringBuilder.AppendLine("")
     }
 
     $docStringBuilder.ToString() | Out-File -FilePath $scriptDocsFilePath -Force
