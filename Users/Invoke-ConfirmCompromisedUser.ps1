@@ -26,7 +26,7 @@ foreach ($userItem in $UserPrincipalName) {
         } | ConvertTo-Json
 
         try {
-            Invoke-MgGraphRequest -Method "POST" -Uri "https://graph.microsoft.com/beta/riskyUsers/confirmCompromised" -Content $confirmCompromisedPostBody -ErrorAction "Stop"
+            Invoke-MgGraphRequest -Method "POST" -Uri "https://graph.microsoft.com/beta/riskyUsers/confirmCompromised" -Body $confirmCompromisedPostBody -ContentType "application/json" -ErrorAction "Stop"
             $confirmedCompromisedStatus = $true
         }
         catch {
