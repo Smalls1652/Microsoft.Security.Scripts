@@ -37,7 +37,7 @@ foreach ($userItem in $UserPrincipalName) {
     $revokedSessionsStatus = $false
     if ($PSCmdlet.ShouldProcess($userObj.UserPrincipalName, "Revoke sessions")) {
         try {
-            $revokedSessionsStatus = Invoke-MgBetaInvalidateAllUserRefreshToken -UserId $userObj.Id -ErrorAction "Stop"
+            $revokedSessionsStatus = (Invoke-MgBetaInvalidateAllUserRefreshToken -UserId $userObj.Id -ErrorAction "Stop").Value
         }
         catch {
             $revokedSessionsStatus = $false
