@@ -4,6 +4,10 @@ This repo contains my personal PowerShell scripts for performing actions on Micr
 
 ## 💻 Scripts
 
+> ⚠️ **Note:**
+> 
+> I'm currently in the process of making all of the scripts, so not all of them are available and there's no documentation for them yet.
+
 All of the scripts are located in the [`Scripts/`](./Scripts/) directory and are separated based on the entity they target.
 
 ## 🤝 License
