@@ -12,9 +12,9 @@
 
 .TAGS exchangeonline security inboxrules
 
-.LICENSEURI https://raw.githubusercontent.com/Smalls1652/Microsoft.Security.Scripts/main/LICENSE
+.LICENSEURI https://git.smalls.online/smalls/Microsoft.Security.Scripts/raw/branch/main/LICENSE
 
-.PROJECTURI https://github.com/Smalls1652/Microsoft.Security.Scripts
+.PROJECTURI https://git.smalls.online/smalls/Microsoft.Security.Scripts
 
 .ICONURI 
 
