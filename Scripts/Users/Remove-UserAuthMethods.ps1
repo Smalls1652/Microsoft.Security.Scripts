@@ -1,6 +1,56 @@
+<#PSScriptInfo
+
+.VERSION 1.0.0
+
+.GUID 63bf0176-7adb-498a-9bb2-bb307aa0d9f0
+
+.AUTHOR Tim Small
+
+.COMPANYNAME Smalls.Online
+
+.COPYRIGHT 2026
+
+.TAGS entra entraid authmethods
+
+.LICENSEURI https://git.smalls.online/smalls/Microsoft.Security.Scripts/raw/branch/main/LICENSE
+
+.PROJECTURI https://git.smalls.online/smalls/Microsoft.Security.Scripts
+
+.ICONURI 
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS 
+
+.EXTERNALSCRIPTDEPENDENCIES 
+
+.RELEASENOTES
+
+.PRIVATEDATA
+
+#>
+
 #Requires -Module @{ ModuleName = "Microsoft.Graph.Authentication"; ModuleVersion = "2.34.0" }
 #Requires -Module @{ ModuleName = "Microsoft.Graph.Users"; ModuleVersion = "2.34.0" }
 #Requires -Module @{ ModuleName = "Microsoft.Graph.Beta.Identity.SignIns"; ModuleVersion = "2.34.0" }
+
+<#
+.SYNOPSIS
+    Removes all user auth methods
+.DESCRIPTION
+    Remove all authentication methods from a user in Entra ID.
+.PARAMETER UserId
+    The user principal name or the user's ID in Entra ID.
+.EXAMPLE
+    Remove-UserAuthMethods.ps1 -UserId "jwinger@greendalecc.edu"
+
+    Removes all authentication methods from the user "jwinger@greendalecc.edu".
+.EXAMPLE
+    Remove-UserAuthMethods.ps1 -UserId "jwinger@greendalecc.edu" -WhatIf
+
+    Does a dry-run/what-if on the removal of all authentication methods from the user "jwinger@greendalecc.edu".
+#>
+
 
 [CmdletBinding(SupportsShouldProcess)]
 param(
